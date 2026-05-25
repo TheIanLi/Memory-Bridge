@@ -19,6 +19,11 @@ footer,
 section.main > div.block-container {
     background-color: #111111 !important;
 }
+
+/* 侧边栏：比主背景略深 */
+[data-testid="stSidebar"] {
+    background-color: #0D0D0D !important;
+}
 section.main > div.block-container {
     padding-top: 0.15rem;
     max-width: 720px;
@@ -33,6 +38,11 @@ section.main > div.block-container {
 [data-testid="stChatInput"] {
     position: relative !important;
     padding-bottom: 28px !important;
+}
+
+[data-testid="stChatInput"] textarea {
+    background-color: #1C1C1E !important;
+    border: 1px solid #333333 !important;
 }
 
 /* 输入框底部提示文字 */
@@ -104,8 +114,8 @@ section.main > div.block-container {
 
 /* 用户气泡 */
 .mb-user {
-    background-color: #2C3A47 !important;
-    color: #ECEFF4 !important;
+    background-color: #2A5E3A !important;
+    color: #E8E8E8 !important;
     border-top-right-radius: 2px !important;
 }
 
@@ -115,9 +125,9 @@ section.main > div.block-container {
 
 /* AI 气泡 */
 .mb-ai {
-    background-color: #1C1C1E !important;
-    color: #D1D1D6 !important;
-    border: 1px solid rgba(255,255,255,0.05) !important;
+    background-color: #2C2C2E !important;
+    color: #D4D4D4 !important;
+    border: 1px solid #3A3A3C !important;
     border-top-left-radius: 2px !important;
 }
 
@@ -126,7 +136,7 @@ section.main > div.block-container {
     background-color: rgba(17, 17, 17, 0.95) !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
-    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    border-bottom: 1px solid #2C2C2E !important;
     z-index: 999999 !important;
     opacity: 1 !important;
     visibility: visible !important;
@@ -156,7 +166,7 @@ section.main > div.block-container {
     content: "收起/展开菜单";
     position: absolute;
     left: 40px;
-    background: rgba(40,40,40,0.9);
+    background: #2C2C2E;
     color: #fff;
     padding: 6px 10px;
     border-radius: 6px;

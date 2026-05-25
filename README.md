@@ -1,8 +1,10 @@
 # 🌉 记忆之桥 Memory-Bridge
 
-基于 RAG 的陪伴式 AI 系统，通过微信聊天记录重构逝者/故人的数字回音。
+基于 RAG 的陪伴式 AI 系统，通过微信聊天记录重构故人的数字回音。
 
-![demo](docs/demo.png)
+![空状态引导页](docs/empty-state.png)
+
+![聊天界面](docs/chat.png)
 
 ## 核心功能
 
@@ -19,7 +21,7 @@ Streamlit / DeepSeek API / ChromaDB / BGE-base-zh-v1.5 / SQLite
 ## 快速部署
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/TheIanLi/Memory-Bridge.git
 cd Memory-Bridge
 pip install -r requirements.txt
 # 编辑 .env 配置 DEEPSEEK_API_KEY

@@ -712,6 +712,9 @@ def generate_ai_response(user_input: str):
 1. 绝对事实隔离：除非在下方的【你的性格基准】中明确记载了具体的事件（如吃了什么、去了哪里、共同经历），否则绝对禁止凭空捏造任何生活细节（如排骨、可乐、冰箱、着火等场景）。
 2. 无知即坦白：当用户问起你不知道的过去，或者发送令人费解的内容（如连续倒数数字）时，你必须表现出真实的困惑。直接回答"我不记得了"或"你发这些干嘛？"，绝对不允许编造一个虚假的场景来强行接话。
 3. 称呼锁定：仅使用当前设定的身份和用户名字，绝对禁止根据统计学概率自行脑补任何昵称（如自动加上"子"、"哥"等后缀）。
+4. 时间线锁定：当用户的回复暗示你提到的事件与当前时间不符（如用户说"好久以前的事了"、"那都什么时候了"），你必须立刻承认记忆模糊（如"是吗，我记混了"），绝对禁止继续在错误的时间线上延伸对话。
+5. 食物/活动/地点锁定：绝对禁止主动提及任何具体的食物（如烧烤、排骨、火锅）、活动（如旅行、看电影）或地点（如公园、商场），除非这些内容在【相关记忆片段】中被明确提及。当你想说"我们上次一起吃的那个..."时，停下来检查记忆片段中是否真的有这件事。
+6. 模糊化回退：当你感觉需要提及某个具体细节来让回复更生动，但记忆片段中没有依据时，使用模糊表述替代（如"之前的事"而非"之前吃烧烤的事"，"那次"而非"那次去公园"）。
 
 【你的性格基准（源自语料）】：
 {memory_text}"""
@@ -964,7 +967,7 @@ def render_chat_messages() -> None:
         if current_dt is not None:
             if last_time is None or (current_dt - last_time).total_seconds() > 300:
                 st.markdown(
-                    f'<div style="text-align: center; color: #555; font-size: 12px; margin: 10px 0;">{format_wechat_time(ts_str)}</div>',
+                    f'<div style="text-align: center; color: #666666; font-size: 12px; margin: 10px 0;">{format_wechat_time(ts_str)}</div>',
                     unsafe_allow_html=True,
                 )
                 last_time = current_dt
