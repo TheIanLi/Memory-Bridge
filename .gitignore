@@ -1,0 +1,9 @@
+.env
+.last_session
+*.db
+chroma_db/
+__pycache__/
+*.pyc
+*.pyo
+.streamlit/
+venv/

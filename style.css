@@ -1,0 +1,166 @@
+/* ========== Shell：隐藏 Streamlit 默认控件 ========== */
+[data-testid="stAppDeployButton"],
+.stAppDeployButton,
+#MainMenu,
+footer,
+[data-testid="stFooter"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+[data-testid="stHeader"] {
+    background-color: transparent !important;
+}
+
+
+/* ========== 全局背景 ========== */
+.stApp,
+[data-testid="stAppViewContainer"],
+section.main > div.block-container {
+    background-color: #111111 !important;
+}
+section.main > div.block-container {
+    padding-top: 0.15rem;
+    max-width: 720px;
+}
+
+/* 隐藏旧的独立提示块 */
+.mb-warm-hint {
+    display: none !important;
+}
+
+/* 聊天输入框底部留出提示文字空间 */
+[data-testid="stChatInput"] {
+    position: relative !important;
+    padding-bottom: 28px !important;
+}
+
+/* 输入框底部提示文字 */
+[data-testid="stChatInput"]::after {
+    content: "AI 重构的回音存在偏差，仅供情感慰藉，请勿替代现实。";
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    color: #A1A1AA;
+    pointer-events: none;
+    white-space: nowrap;
+    opacity: 0.9;
+}
+
+/* ========== 聊天消息行布局 ========== */
+[data-testid="stChatMessage"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0.5rem 0 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+}
+
+/* 头像固定 32px */
+[data-testid="stChatMessage"] > div:first-child {
+    flex: 0 0 32px !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    margin-top: 4px !important;
+}
+
+/* 重置 Streamlit 原生消息容器样式 */
+[data-testid="stChatMessageContent"] {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    flex-grow: 0 !important;
+    width: auto !important;
+    max-width: 75% !important;
+}
+
+/* ========== 自定义聊天气泡 ========== */
+.mb-bubble {
+    display: inline-block !important;
+    width: fit-content !important;
+    padding: 10px 14px !important;
+    border-radius: 12px !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    word-break: break-word !important;
+    text-align: left !important;
+}
+
+.mb-bubble p {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 用户气泡 */
+.mb-user {
+    background-color: #2C3A47 !important;
+    color: #ECEFF4 !important;
+    border-top-right-radius: 2px !important;
+}
+
+[data-testid="stChatMessage"]:has(.mb-user) {
+    flex-direction: row-reverse !important;
+}
+
+/* AI 气泡 */
+.mb-ai {
+    background-color: #1C1C1E !important;
+    color: #D1D1D6 !important;
+    border: 1px solid rgba(255,255,255,0.05) !important;
+    border-top-left-radius: 2px !important;
+}
+
+/* ========== 自定义顶部标题栏 ========== */
+[data-testid="stHeader"] {
+    background-color: rgba(17, 17, 17, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    z-index: 999999 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    height: 50px !important;
+}
+
+/* 侧边栏展开按钮始终可见，替换为汉堡菜单图标 */
+[data-testid="collapsedControl"],
+[data-testid="stSidebarCollapsedControl"] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+    z-index: 9999999 !important;
+}
+[data-testid="collapsedControl"] svg {
+    display: none !important;
+}
+[data-testid="collapsedControl"]::before {
+    content: "\2630" !important;
+    font-size: 20px;
+    color: #a8a8a8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+[data-testid="collapsedControl"]:hover::after {
+    content: "收起/展开菜单";
+    position: absolute;
+    left: 40px;
+    background: rgba(40,40,40,0.9);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    pointer-events: none;
+}
