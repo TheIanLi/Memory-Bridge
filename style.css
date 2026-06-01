@@ -1,4 +1,4 @@
-/* ========== Shell：隐藏 Streamlit 默认控件 ========== */
+/* ===== Shell：隐藏 Streamlit 默认控件 ===== */
 [data-testid="stAppDeployButton"],
 .stAppDeployButton,
 #MainMenu,
@@ -8,132 +8,29 @@ footer,
     visibility: hidden !important;
 }
 
-[data-testid="stHeader"] {
-    background-color: transparent !important;
-}
 
-
-/* ========== 全局背景 ========== */
-.stApp,
+/* ===== 全局背景与字体 ===== */
 [data-testid="stAppViewContainer"],
-section.main > div.block-container {
-    background-color: #111111 !important;
+[data-testid="stApp"],
+.stApp {
+    background-color: #212121 !important;
 }
 
-/* 侧边栏：比主背景略深 */
-[data-testid="stSidebar"] {
-    background-color: #0D0D0D !important;
-}
 section.main > div.block-container {
     padding-top: 0.15rem;
     max-width: 720px;
 }
 
-/* 隐藏旧的独立提示块 */
-.mb-warm-hint {
-    display: none !important;
+
+/* ===== 侧边栏 ===== */
+[data-testid="stSidebar"] {
+    background-color: #1A1A1A !important;
 }
 
-/* 聊天输入框底部留出提示文字空间 */
-[data-testid="stChatInput"] {
-    position: relative !important;
-    padding-bottom: 28px !important;
-}
 
-[data-testid="stChatInput"] textarea {
-    background-color: #1C1C1E !important;
-    border: 1px solid #333333 !important;
-}
-
-/* 输入框底部提示文字 */
-[data-testid="stChatInput"]::after {
-    content: "AI 重构的回音存在偏差，仅供情感慰藉，请勿替代现实。";
-    position: absolute;
-    bottom: 4px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 13px;
-    color: #A1A1AA;
-    pointer-events: none;
-    white-space: nowrap;
-    opacity: 0.9;
-}
-
-/* ========== 聊天消息行布局 ========== */
-[data-testid="stChatMessage"] {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0.5rem 0 !important;
-    display: flex !important;
-    align-items: flex-start !important;
-    gap: 10px !important;
-}
-
-/* 头像固定 32px */
-[data-testid="stChatMessage"] > div:first-child {
-    flex: 0 0 32px !important;
-    width: 32px !important;
-    height: 32px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin: 0 !important;
-    margin-top: 4px !important;
-}
-
-/* 重置 Streamlit 原生消息容器样式 */
-[data-testid="stChatMessageContent"] {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-    flex-grow: 0 !important;
-    width: auto !important;
-    max-width: 75% !important;
-}
-
-/* ========== 自定义聊天气泡 ========== */
-.mb-bubble {
-    display: inline-block !important;
-    width: fit-content !important;
-    padding: 10px 14px !important;
-    border-radius: 12px !important;
-    font-size: 15px !important;
-    line-height: 1.6 !important;
-    word-break: break-word !important;
-    text-align: left !important;
-}
-
-.mb-bubble p {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-/* 用户气泡 */
-.mb-user {
-    background-color: #2A5E3A !important;
-    color: #E8E8E8 !important;
-    border-top-right-radius: 2px !important;
-}
-
-[data-testid="stChatMessage"]:has(.mb-user) {
-    flex-direction: row-reverse !important;
-}
-
-/* AI 气泡 */
-.mb-ai {
-    background-color: #2C2C2E !important;
-    color: #D4D4D4 !important;
-    border: 1px solid #3A3A3C !important;
-    border-top-left-radius: 2px !important;
-}
-
-/* ========== 自定义顶部标题栏 ========== */
+/* ===== 顶部标题栏 ===== */
 [data-testid="stHeader"] {
-    background-color: rgba(17, 17, 17, 0.95) !important;
+    background-color: rgba(33, 33, 33, 0.95) !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
     border-bottom: 1px solid #2C2C2E !important;
@@ -143,7 +40,7 @@ section.main > div.block-container {
     height: 50px !important;
 }
 
-/* 侧边栏展开按钮始终可见，替换为汉堡菜单图标 */
+/* 汉堡菜单按钮：始终可见 */
 [data-testid="collapsedControl"],
 [data-testid="stSidebarCollapsedControl"] {
     opacity: 1 !important;
@@ -166,7 +63,7 @@ section.main > div.block-container {
     content: "收起/展开菜单";
     position: absolute;
     left: 40px;
-    background: #2C2C2E;
+    background: #242424;
     color: #fff;
     padding: 6px 10px;
     border-radius: 6px;
@@ -174,3 +71,102 @@ section.main > div.block-container {
     white-space: nowrap;
     pointer-events: none;
 }
+
+
+/* ===== 聊天气泡 ===== */
+.mb-bubble {
+    display: inline-block !important;
+    max-width: 75% !important;
+    padding: 10px 14px !important;
+    word-wrap: break-word !important;
+    line-height: 1.6 !important;
+    font-size: 15px !important;
+}
+
+/* 用户气泡：Telegram 深蓝，右下小圆角 */
+.mb-bubble.mb-user {
+    background-color: #2B5278 !important;
+    color: #FFFFFF !important;
+    border-radius: 16px 16px 4px 16px !important;
+}
+
+/* AI 气泡：深色底，左下小圆角 */
+.mb-bubble.mb-ai {
+    background-color: #182533 !important;
+    color: #F0F0F0 !important;
+    border-radius: 16px 16px 16px 4px !important;
+}
+
+/* 用户消息容器：右对齐 */
+[data-testid="stChatMessage"]:has(.mb-user) [data-testid="stMarkdownContainer"] {
+    text-align: right !important;
+}
+
+/* AI 消息容器：左对齐 */
+[data-testid="stChatMessage"]:has(.mb-ai) [data-testid="stMarkdownContainer"] {
+    text-align: left !important;
+}
+
+/* 用户消息行：头像移到右边（反转 flex 方向） */
+[data-testid="stChatMessage"]:has(.mb-user) {
+    flex-direction: row-reverse !important;
+    background-color: transparent !important;
+}
+
+/* AI 消息行：头像保持左边 */
+[data-testid="stChatMessage"]:has(.mb-ai) {
+    flex-direction: row !important;
+    background-color: transparent !important;
+}
+
+/* 清除所有聊天消息行的背景色（包括内层容器） */
+[data-testid="stChatMessage"],
+[data-testid="stChatMessage"] > div {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+/* ===== 输入框 ===== */
+/* 底部容器背景融入页面 */
+[data-testid="stBottom"] > div {
+    background: #212121 !important;
+    border-top: none !important;
+}
+
+[data-testid="stChatInput"] {
+    background-color: #2B2B2B !important;
+    border: none !important;
+    border-radius: 24px !important;
+}
+
+[data-testid="stChatInput"]:focus-within {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stChatInput"] textarea {
+    color: #E0E0E0 !important;
+}
+
+[data-testid="stChatInput"] textarea::placeholder {
+    color: #777777 !important;
+}
+
+/* 发送按钮 */
+[data-testid="stChatInput"] button {
+    color: #888888 !important;
+    background: transparent !important;
+}
+[data-testid="stChatInput"] button:hover {
+    color: #CCCCCC !important;
+}
+
+
+/* ===== 空状态引导页 ===== */
+/* 样式在 app.py 中通过内联 HTML 处理 */
+
+
+/* ===== 对话框/弹窗 ===== */
+/* Streamlit 原生 st.dialog 组件，暂无需覆盖 */
