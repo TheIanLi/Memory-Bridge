@@ -2,9 +2,9 @@
 
 基于 RAG 的陪伴式 AI 系统——上传微信聊天记录，生成故人的数字回音。
 
-![空状态引导页](docs/empty-state.png)
+![空状态引导页](docs/empty_state.png)
 
-![聊天界面](docs/chat.png)
+![聊天界面](docs/chat_ui.png)
 
 ## 技术架构
 
