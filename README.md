@@ -71,20 +71,22 @@ streamlit run memory_bridge/app.py
 
 **当前局限：**
 
-- 仅支持微信 `.txt` 导出格式，不支持 QQ、Telegram 等其他 IM 的聊天记录格式
-- 人格提炼质量依赖于聊天记录的时长和丰富度——只有几十条消息的语料效果有限
-- 没有用户认证系统，session 通过 URL 参数传递，不适合公开部署
-- 前端依赖 Streamlit 默认样式，移动端体验一般
-- 对话历史仅保留最近 10 轮（可配置），不支持无限上下文
+| 局限项 | 说明 / 应对思路 |
+|---|---|
+| 仅支持微信 `.txt` 导出格式 | 格式解析层已解耦为独立模块（`text_processing.py`），新增 QQ / Telegram 等格式只需实现对应的 parser，不涉及架构改动 |
+| 人格提炼质量依赖语料丰富度 | 计划在 UI 层加入最低消息数阈值校验（如 ≥ 200 条），语料不足时明确告知用户而非强行生成低质量画像 |
+| 无用户认证，session 通过 URL 参数传递 | 个人单机部署场景下的刻意取舍——零配置、无 cookie banner。多用户 SaaS 场景可前置 nginx basic auth 或 OAuth2 Proxy |
+| 前端依赖 Streamlit 默认样式，移动端体验一般 | Streamlit 核心定位是数据原型，非生产级前端。长期考虑 FastAPI + React 重构前端层，同时保留 Streamlit 作为快速原型入口 |
+| 对话历史仅保留最近 10 轮 | 受限于 LLM context window 成本。缓解方案：对早期对话做摘要压缩后注入 system prompt，在 token 预算内拓展有效记忆跨度 |
 
-**未来规划：**
+**路线图：**
 
-- 支持多格式导入（QQ 导出、Telegram JSON、WhatsApp 导出）
-- 引入对话质量评估面板（`evaluate_response_quality` 已有雏形）
-- 对话历史全文搜索
-- Prompt 配置界面（允许用户在 UI 中调整人格提炼参数）
-- Docker 一键部署
+- **v0.3（近期）** — 支持 QQ / Telegram 聊天记录导入、上传文件大小与格式校验、语料最低消息数阈值提醒
+- **v0.4（中期）** — 对话质量评估面板（基于 embedding 相似度的回复质量评估机制，已有雏形）、Prompt 配置界面、对话历史全文搜索
+- **v1.0（远期）** — Docker 一键部署、支持多模型切换（GPT / Claude / 本地模型）、语音消息与语音回复
 
 ## License
 
 MIT
+
+本项目为技术探索性质，旨在验证 RAG + 人格镜像的技术可行性，仅供情感慰藉参考，不可替代专业心理咨询。
